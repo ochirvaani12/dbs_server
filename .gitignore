@@ -1,0 +1,11 @@
+# Node.js files
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
