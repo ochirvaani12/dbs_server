@@ -140,4 +140,70 @@ const Task = sequelize.define("task", {
   }
 });
 
-module.exports = { sequelize, Login, ClientCompany, ClientStaff, Staff, Project, Task };
+const VwTask = sequelize.define("vw_task", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true
+  },
+  company_id: {
+    type: DataTypes.INTEGER,
+  },
+  company_name: {
+    type: DataTypes.STRING,
+  },
+  proj_id: {
+    type: DataTypes.INTEGER,
+  },
+  proj_name: {
+    type: DataTypes.STRING,
+  },
+  proj_desc: {
+    type: DataTypes.STRING,
+  },
+  client_staff_id: {
+    type: DataTypes.INTEGER,
+  },
+  client_staff_name: {
+    type: DataTypes.STRING,
+  },
+  staff_id: {
+    type: DataTypes.INTEGER,
+  },
+  staff_firstname: {
+    type: DataTypes.STRING,
+  },
+  staff_lastname: {
+    type: DataTypes.STRING,
+  },
+  staff_position: {
+    type: DataTypes.STRING,
+  },
+  status: {
+    type: DataTypes.STRING,
+  },
+  subject: {
+    type: DataTypes.STRING,
+  },
+  type: {
+    type: DataTypes.STRING,
+  },
+  priority: {
+    type: DataTypes.INTEGER,
+  },
+  position: {
+    type: DataTypes.STRING
+  },
+  due_date: {
+    type: DataTypes.DATEONLY
+  },
+  created_at: {
+    type: DataTypes.DATE
+  },
+  finished_at: {
+    type: DataTypes.DATE
+  },
+}, {
+  timestamps: false
+});
+
+module.exports = { sequelize, Login, ClientCompany, ClientStaff, Staff, Project, Task, VwTask };
