@@ -25,17 +25,21 @@ app.listen(8080, () => {
 })
 
 // CREATING DATABASE CONNECTION
-const { sequelize } = require("./app/db");
+const { sequelize, Staff, Login, ClientStaff, ClientCompany, Project } = require("./app/db");
 const { createTaskViewQuery } = require('./app/db/migration')
-sequelize.sync({ force: false })
-    .then(() => {
+sequelize.sync({ force: true })
+    .then(async () => {
         console.log("Synced db.");
 
-        sequelize.query(createTaskViewQuery, { raw: true }).then(() => {
-            console.log('View created successfully');
-        }).catch((err) => {
-            console.error('Failed to create view:', err);
-        });
+        await ClientCompany.create({ id: 1, name: 'BSB'})
+        await Project.create({id: 1, name: 'ERP system', company_id: 1, description: 'Байгуулгын дотоодын ERP систем'})
+
+        await Staff.create({ id: 1, firstname: 'Jane', lastname: 'Bob', position: 'DEVELOPER'})
+        await ClientStaff.create({ id: 1, name: 'Richard', company_id: 1})
+
+        await Login.create({ staff_id: 1, staff_type: 'CLIENT', username: 'client', password: '1234' });
+        await Login.create({ staff_id: 1, staff_type: 'STAFF', username: 'staff', password: '1234' });
+
     })
     .catch((err) => {
         console.log("Failed to sync db: " + err.message);

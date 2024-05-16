@@ -99,7 +99,8 @@ const Project = sequelize.define("project", {
 const Task = sequelize.define("task", {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   proj_id: {
     type: DataTypes.INTEGER,
@@ -126,7 +127,7 @@ const Task = sequelize.define("task", {
     type: DataTypes.INTEGER,
   },
   position: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   due_date: {
     type: DataTypes.DATEONLY,
